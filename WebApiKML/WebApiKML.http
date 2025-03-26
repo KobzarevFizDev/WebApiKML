@@ -1,0 +1,6 @@
+@WebApiKML_HostAddress = http://localhost:5250
+
+GET {{WebApiKML_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
