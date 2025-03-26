@@ -46,6 +46,19 @@ namespace WebApiKML.Services
             {
                 Field field = _fieldsRepository.Items[i];
                 Centroid centroid = _centroidsRepository.Items[i];
+
+                WGS84PointDTO centroidDTO = new WGS84PointDTO()
+                {
+                    Latitude = centroid.Center.Latitude,
+                    Longitude = centroid.Center.Longitude
+                };
+
+                List<WGS84PointDTO> polygonDTO = field.Polygon
+                    .Select(p => new WGS84PointDTO()
+                    {
+                        Latitude = p.Latitude,
+                        Longitude = p.Longitude
+                    }).ToList();
          
                 MapItemDTO mapItem = new MapItemDTO
                 {
@@ -54,8 +67,8 @@ namespace WebApiKML.Services
                     Size = field.Size,
                     Location = new LocationDTO
                     {
-                        Center = centroid.Center,
-                        Polygon = field.Polygon
+                        Center = centroidDTO,
+                        Polygon = polygonDTO
                     }
                 };
 

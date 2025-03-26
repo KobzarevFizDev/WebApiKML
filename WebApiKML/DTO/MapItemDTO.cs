@@ -13,8 +13,8 @@ namespace WebApiKML.DTO
 
     public class LocationDTO
     {
-        public required WGS84Point Center { get; set; }
-        public required List<WGS84Point> Polygon { get; set; }
+        public required WGS84PointDTO Center { get; set; }
+        public required List<WGS84PointDTO> Polygon { get; set; }
     }
 
 }
