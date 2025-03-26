@@ -13,4 +13,5 @@ WORKDIR /app
 COPY --from=build /app ./
 COPY --from=build /source/WebApiKML/WebApiKML.http ./
 COPY --from=build /source/WebApiKML/appsettings.json ./
-ENTRYPOINT ["dotnet", "DevicesBackend.dll"]
+COPY --from=build /source/WebApiKML/Resources ./Resources
+ENTRYPOINT ["dotnet", "WebApiKML.dll"]
